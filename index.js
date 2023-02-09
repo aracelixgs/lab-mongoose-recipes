@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-
 // Import of the model Recipe from './models/Recipe.model.js'
 const Recipe = require('./models/Recipe.model');
 // Import of the data from './data.json'
@@ -43,6 +42,11 @@ mongoose
   })
   .then((res) => {
     console.log("Se han añadido todas las recetas")
+    return Recipe.find()
+    .select({title: 1})
+  })
+  .then((res) => {
+    console.log(res)
   })
   .catch(error => {
     console.error('Error connecting to the database', error);
