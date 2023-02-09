@@ -55,6 +55,10 @@ mongoose
   })
   .then((res) => {
     console.log("Receta borrada",res)
+    return mongoose.connection.close()
+  })
+  .then((res) => {
+    console.log("Base de datos cerrada")
   })
   .catch(error => {
     console.error('Error connecting to the database', error);
