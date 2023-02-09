@@ -47,6 +47,10 @@ mongoose
   })
   .then((res) => {
     console.log(res)
+    return Recipe.findOneAndUpdate({title: "Rigatoni alla Genovese"}, {duration: 100}, {new: true})
+  })
+  .then((res) => {
+    console.log("duración actualizada" + res)
   })
   .catch(error => {
     console.error('Error connecting to the database', error);
