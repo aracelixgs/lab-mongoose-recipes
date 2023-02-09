@@ -15,8 +15,29 @@ mongoose
     // Before adding any recipes to the database, let's remove all existing ones
     return Recipe.deleteMany()
   })
-  .then(() => {
-    // Run your code here, after you have insured that the connection was made
+  .then((res) => {
+    return Recipe.create({
+      tittle: "Frangoyo",
+      level: 'Amateur Chef',
+      ingredients: [
+        "leche",
+        "huevo",
+        "Almendras",
+      ],
+      cuisine: "Canaria",
+      dishType: "dessert",
+      imagen: "https://i.ytimg.com/vi/89Kr74LOq4A/maxresdefault.jpg",
+      duration: 220,
+      creator: "Un Canario",
+    })
+  })
+  .then( (res) => {
+    console.log("Se ha creado la receta")
+    return Recipe.find({tittle: "Frangoyo"})
+    .select({tittle: 1})
+  })
+  .then((res) => {
+    console.log(res)
   })
   .catch(error => {
     console.error('Error connecting to the database', error);
